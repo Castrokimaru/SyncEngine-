@@ -1,23 +1,26 @@
-$primary: #5cdd8b;
-$danger: #dc3545;
-$warning: #f8a306;
-$maintenance: #1747f5;
-$link-color: #111;
-$border-radius: 50rem;
-$secondary-text: #aaa;
+// Brand Colors - Premium HSL-aligned modern palette
+$primary: #10b981;        // Premium emerald green (Online)
+$danger: #ef4444;         // Premium crimson red (Offline)
+$warning: #f59e0b;        // Premium amber orange (Pending/Warning)
+$maintenance: #6366f1;    // Premium indigo blue (Maintenance)
+$link-color: #4f46e5;     // Indigo links
+$border-radius: 12px;     // Refined modern border radius instead of huge 50rem pills
+$secondary-text: #64748b; // Muted slate text
 
-$highlight: #7ce8a4;
-$highlight-white: #e7faec;
+$highlight: #34d399;      // Light emerald hover
+$highlight-white: #ecfdf5; // Emerald tint for active items
 
-$dark-font-color: #b1b8c0;
-$dark-font-color2: #020b05;
-$dark-bg: #0d1117;
-$dark-bg2: #070a10;
-$dark-border-color: #1d2634;
-$dark-header-bg: #161b22;
+// Obsidian Dark Theme Colors
+$dark-font-color: #cbd5e1;  // Crisp slate 300 text
+$dark-font-color2: #0f172a; // Deep slate for primary button contrast text
+$dark-bg: #0f172a;          // Obsidian deep card background (Slate 900)
+$dark-bg2: #090d16;         // Obsidian extra deep body background
+$dark-border-color: #1e293b;// Premium dark slate border (Slate 800)
+$dark-header-bg: #0f172a;   // Translucent obsidian header base
 
-$easing-in: cubic-bezier(0.54, 0.78, 0.55, 0.97);
-$easing-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-$easing-in-out: cubic-bezier(0.79, 0.14, 0.15, 0.86);
+// Custom transition curves for elegant micro-animations
+$easing-in: cubic-bezier(0.4, 0, 0.2, 1);
+$easing-out: cubic-bezier(0, 0, 0.2, 1);
+$easing-in-out: cubic-bezier(0.4, 0, 0.2, 1);
 
-$dropdown-border-radius: 0.5rem;
+$dropdown-border-radius: 12px;

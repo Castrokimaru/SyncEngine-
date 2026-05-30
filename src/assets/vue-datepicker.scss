@@ -4,25 +4,25 @@
 // Must use #{ }
 // Remark: https://stackoverflow.com/questions/50202991/unable-to-set-scss-variable-to-css-variable
 .dp__theme_dark {
-    --dp-background-color: #{$dark-bg2};
+    --dp-background-color: #{$dark-bg};
     --dp-text-color: #{$dark-font-color};
-    --dp-hover-color: #484848;
+    --dp-hover-color: #1e293b;
     --dp-hover-text-color: #ffffff;
-    --dp-hover-icon-color: #959595;
-    --dp-primary-color: #{#5cdd8b};
-    --dp-primary-text-color: #ffffff;
-    --dp-secondary-color: #494949;
+    --dp-hover-icon-color: #cbd5e1;
+    --dp-primary-color: #{$primary};
+    --dp-primary-text-color: #0f172a;
+    --dp-secondary-color: #334155;
     --dp-border-color: #{$dark-border-color};
-    --dp-menu-border-color: #2d2d2d;
-    --dp-border-color-hover: #{$dark-border-color};
-    --dp-disabled-color: #212121;
-    --dp-scroll-bar-background: #212121;
-    --dp-scroll-bar-color: #484848;
+    --dp-menu-border-color: #{$dark-border-color};
+    --dp-border-color-hover: #{$primary};
+    --dp-disabled-color: #090d16;
+    --dp-scroll-bar-background: #090d16;
+    --dp-scroll-bar-color: #1e293b;
     --dp-success-color: #{$primary};
-    --dp-success-color-disabled: #428f59;
-    --dp-icon-color: #959595;
-    --dp-danger-color: #e53935;
-    --dp-highlight-color: rgba(0, 92, 178, 0.2);
+    --dp-success-color-disabled: rgba(16, 185, 129, 0.5);
+    --dp-icon-color: #94a3b8;
+    --dp-danger-color: #{$danger};
+    --dp-highlight-color: rgba(16, 185, 129, 0.15);
 }
 
 .dp__input {

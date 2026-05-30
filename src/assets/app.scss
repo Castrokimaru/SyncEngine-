@@ -2,36 +2,114 @@
 @import "multiselect.scss";
 @import "node_modules/bootstrap/scss/bootstrap";
 
+/* ==========================================================================
+   Premium Design Refresh Styling System
+   ========================================================================== */
+
 #app {
     font-family:
+        "Plus Jakarta Sans",
         "Twemoji Country Flags",
         BlinkMacSystemFont,
-        segoe ui,
+        "Segoe UI",
         Roboto,
-        helvetica neue,
+        "Helvetica Neue",
         Arial,
-        noto sans,
-        sans-serif,
-        apple color emoji,
-        segoe ui emoji,
-        segoe ui symbol,
-        noto color emoji;
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    background-color: #f8fafc;
+    color: #1e293b;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1 {
     font-size: 32px;
+    font-weight: 700;
+    color: #0f172a;
 }
 
 h2 {
     font-size: 26px;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+h3, h4, h5, h6 {
+    font-weight: 600;
+    color: #0f172a;
 }
 
 textarea.form-control {
-    border-radius: 19px;
+    border-radius: 12px;
 }
 
+/* Scrollbars */
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 100px;
+    transition: background 0.3s;
+
+    &:hover {
+        background: #94a3b8;
+    }
+}
+
+/* Lost Connection Bar */
+.lost-connection {
+    padding: 8px 12px;
+    background-color: $danger;
+    color: white;
+    position: fixed;
+    width: 100%;
+    z-index: 99999;
+    font-weight: 500;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+    a {
+        color: white;
+        text-decoration: underline;
+        font-weight: 600;
+        
+        &:hover {
+            color: rgba(255, 255, 255, 0.8);
+        }
+    }
+}
+
+/* Layout Header (Glassmorphic) */
+header {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid #e2e8f0 !important;
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: all 0.3s ease;
+
+    .title {
+        font-weight: 800;
+        font-size: 1.35rem;
+        background: linear-gradient(135deg, darken($primary, 10%), $primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
 }
 
 .bg-maintenance {
@@ -52,156 +130,216 @@ textarea.form-control {
     color: inherit;
 }
 
+/* Lists and Groups */
 .list-group {
-    border-radius: 0.75rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
 
-    .dark & {
-        .list-group-item {
-            background-color: $dark-bg;
-            color: $dark-font-color;
-            border-color: $dark-border-color;
-        }
+    .list-group-item {
+        border-color: #f1f5f9;
+        padding: 12px 18px;
     }
 }
 
-// optgroup
 optgroup {
-    color: #b1b1b1;
+    color: #94a3b8;
     option {
-        color: #212529;
+        color: #1e293b;
     }
 }
 
-.dark {
-    optgroup {
-        color: #535864;
-        option {
-            color: $dark-font-color;
-        }
-    }
-}
-
-// Scrollbar
-::-webkit-scrollbar-thumb {
-    background: #ccc;
-    border-radius: 20px;
-}
-
+/* Modals */
 .modal {
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 .modal-content {
-    border-radius: 1rem;
-    box-shadow: 0 15px 70px rgba(0, 0, 0, 0.1);
-
-    .dark & {
-        box-shadow: 0 15px 70px rgb(0 0 0);
-        background-color: $dark-bg;
-    }
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
 }
 
 .VuePagination__count {
     font-size: 13px;
     text-align: center;
+    color: #64748b;
 }
 
+/* Containers and Shadow Boxes */
 .shadow-box {
-    //overflow: hidden;   // Forget why add this, but multiple select hide by this
-    box-shadow: 0 15px 70px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-    border-radius: 10px;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02), 0 2px 8px rgba(0, 0, 0, 0.02);
+    border-radius: 16px !important;
+    padding: 20px;
+    transition: transform 0.25s $easing-out, box-shadow 0.25s $easing-out, border-color 0.25s $easing-out;
+
+    &:hover {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.02);
+    }
 
     &.big-padding {
-        padding: 20px;
+        padding: 30px;
     }
 }
 
+/* Buttons */
 .btn {
-    padding-left: 20px;
-    padding-right: 20px;
+    font-weight: 500;
+    border-radius: 10px !important;
+    padding: 8px 20px;
+    transition: all 0.25s $easing-out;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+
+    &:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    &:active {
+        transform: translateY(0.5px);
+    }
 }
 
 .btn-sm {
-    border-radius: 25px;
+    border-radius: 8px !important;
+    padding: 5px 12px !important;
 }
 
 .btn-primary {
-    color: white;
+    background-color: $primary !important;
+    border-color: $primary !important;
+    color: #ffffff !important;
 
     &:hover,
     &:active,
     &:focus,
     &.active {
-        color: white;
-        background-color: $highlight;
-        border-color: $highlight;
-    }
-
-    .dark & {
-        color: $dark-font-color2;
+        background-color: darken($primary, 5%) !important;
+        border-color: darken($primary, 5%) !important;
+        color: white !important;
+        box-shadow: 0 4px 15px rgba($primary, 0.3) !important;
     }
 }
 
 .btn-normal {
-    $bg-color: #f5f5f5;
-
-    background-color: $bg-color;
-    border-color: $bg-color;
+    background-color: #f1f5f9 !important;
+    border-color: #e2e8f0 !important;
+    color: #475569 !important;
 
     &:hover {
-        $hover-color: darken($bg-color, 3%);
-        background-color: $hover-color;
-        border-color: $hover-color;
+        background-color: #e2e8f0 !important;
+        color: #0f172a !important;
     }
 }
 
 .btn-warning {
-    color: white;
+    background-color: $warning !important;
+    border-color: $warning !important;
+    color: white !important;
 
     &:hover,
     &:active,
     &:focus,
     &.active {
-        color: white;
+        background-color: darken($warning, 5%) !important;
+        border-color: darken($warning, 5%) !important;
+        color: white !important;
+    }
+}
+
+.btn-danger {
+    background-color: $danger !important;
+    border-color: $danger !important;
+    color: white !important;
+
+    &:hover,
+    &:active,
+    &:focus,
+    &.active {
+        background-color: darken($danger, 5%) !important;
+        border-color: darken($danger, 5%) !important;
+        color: white !important;
     }
 }
 
 .btn-info {
-    color: white;
+    background-color: $maintenance !important;
+    border-color: $maintenance !important;
+    color: white !important;
 
     &:hover,
     &:active,
     &:focus,
     &.active {
-        color: white;
+        background-color: darken($maintenance, 5%) !important;
+        border-color: darken($maintenance, 5%) !important;
+        color: white !important;
     }
 }
 
 .btn-dark {
-    background-color: #161b22;
+    background-color: #0f172a !important;
+    border-color: #1e293b !important;
 }
 
 .btn-outline-normal {
-    padding: 4px 10px;
-    border: 1px solid #ced4da;
-    border-radius: 25px;
+    padding: 6px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px !important;
     background-color: transparent;
+    color: #475569;
 
-    .dark & {
-        color: $dark-font-color;
-        border: 1px solid $dark-font-color2;
+    &:hover {
+        background-color: #f1f5f9;
+        color: #0f172a;
     }
 
     &.active {
         background-color: $highlight-white;
-
-        .dark & {
-            background-color: $dark-font-color2;
-        }
+        border-color: $primary;
+        color: $primary;
     }
 }
 
+/* Nav Link overrides */
+.nav-link {
+    font-weight: 500;
+    border-radius: 8px !important;
+    padding: 8px 16px !important;
+    color: #475569 !important;
+    transition: all 0.2s ease;
+
+    &:hover {
+        background-color: rgba($primary, 0.08) !important;
+        color: $primary !important;
+        transform: translateY(-1px);
+    }
+
+    &.active, &.router-link-active {
+        background-color: $primary !important;
+        color: #ffffff !important;
+        box-shadow: 0 4px 12px rgba($primary, 0.2);
+    }
+}
+
+/* Form Controls */
+.form-control, .form-select {
+    border-radius: 10px !important;
+    border: 1px solid #cbd5e1 !important;
+    padding: 8px 14px !important;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+    color: #1e293b;
+
+    &:focus {
+        border-color: $primary !important;
+        box-shadow: 0 0 0 4px rgba($primary, 0.1) !important;
+        outline: none;
+    }
+}
+
+/* Responsive Table Overrides */
 @media (max-width: 550px) {
     .table-shadow-box {
         padding: 10px !important;
@@ -235,24 +373,30 @@ optgroup {
             }
 
             td {
-                border-bottom: 1px solid $dark-font-color;
+                border-bottom: 1px solid #e2e8f0;
                 display: block;
-                padding: 4px;
+                padding: 6px;
 
                 .badge {
                     margin: auto;
                     display: block;
-                    width: 30%;
+                    width: 40%;
                 }
             }
         }
     }
 }
 
-// Dark Theme override here
+/* ==========================================================================
+   Obsidian Dark Theme overrides
+   ========================================================================== */
 .dark {
-    background-color: #090c10;
+    background-color: #060911;
     color: $dark-font-color;
+
+    h1, h2, h3, h4, h5, h6 {
+        color: #ffffff;
+    }
 
     mark,
     .mark {
@@ -261,32 +405,88 @@ optgroup {
 
     &::-webkit-scrollbar-thumb,
     ::-webkit-scrollbar-thumb {
-        background: $dark-border-color;
+        background: #1e293b;
+        
+        &:hover {
+            background: #334155;
+        }
+    }
+
+    header {
+        background-color: rgba(#0f172a, 0.8) !important;
+        border-bottom-color: #1e293b !important;
+
+        .title {
+            background: linear-gradient(135deg, #ffffff, $primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        span {
+            color: #ffffff;
+        }
+    }
+
+    .nav-link {
+        color: #cbd5e1 !important;
+
+        &:hover {
+            background-color: rgba($primary, 0.12) !important;
+            color: $primary !important;
+        }
+
+        &.active, &.router-link-active {
+            background-color: $primary !important;
+            color: #0f172a !important;
+            box-shadow: 0 4px 12px rgba($primary, 0.35);
+        }
     }
 
     .shadow-box {
         &:not(.alert) {
-            background-color: $dark-bg;
+            background-color: #0f172a !important;
+            border-color: #1e293b;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+
+            &:hover {
+                border-color: rgba($primary, 0.2);
+            }
+        }
+    }
+
+    .list-group {
+        .list-group-item {
+            background-color: #0f172a;
+            color: $dark-font-color;
+            border-color: #1e293b;
+        }
+    }
+
+    optgroup {
+        color: #475569;
+        option {
+            color: $dark-font-color;
         }
     }
 
     .form-check-input {
-        background-color: $dark-bg2;
-        border-color: $dark-border-color;
+        background-color: #090d16;
+        border-color: #1e293b;
     }
 
     .input-group-text {
-        background-color: #282f39;
-        border-color: $dark-border-color;
+        background-color: #1e293b;
+        border-color: #1e293b;
         color: $dark-font-color;
     }
 
     .form-check-input:checked {
-        border-color: $primary; // Re-apply bootstrap border
+        border-color: $primary;
+        background-color: $primary;
     }
 
     .form-switch .form-check-input {
-        background-color: #232f3b;
+        background-color: #1e293b;
     }
 
     a:not(.btn),
@@ -295,7 +495,7 @@ optgroup {
         color: $dark-font-color;
 
         &.btn-info {
-            color: white;
+            color: #0f172a;
         }
     }
 
@@ -309,37 +509,33 @@ optgroup {
     .form-select,
     .form-select:focus {
         color: $dark-font-color;
-        background-color: $dark-bg2;
+        background-color: #090d16 !important;
+        border-color: #1e293b !important;
     }
 
     .form-select:disabled {
         color: rgba($dark-font-color, 0.7);
-        background-color: $dark-bg;
-    }
-
-    .form-control,
-    .form-select {
-        border-color: $dark-border-color;
+        background-color: #0f172a !important;
     }
 
     .form-control:disabled,
     .form-control[readonly] {
-        background-color: #232f3b;
-        opacity: 1;
+        background-color: #1e293b !important;
+        opacity: 0.8;
     }
 
     .table-hover > tbody > tr:hover > * {
-        --bs-table-accent-bg: #070a10;
-        color: $dark-font-color;
+        --bs-table-accent-bg: #090d16;
+        color: #ffffff;
     }
 
     .nav-pills .nav-link.active,
     .nav-pills .show > .nav-link {
-        color: $dark-font-color2;
+        color: #0f172a;
     }
 
     .bg-primary {
-        color: $dark-font-color2;
+        color: #0f172a;
     }
 
     .btn-secondary {
@@ -347,27 +543,25 @@ optgroup {
     }
 
     .btn-normal {
-        $bg-color: $dark-header-bg;
-
-        color: $dark-font-color;
-        background-color: $bg-color;
-        border-color: $bg-color;
+        color: $dark-font-color !important;
+        background-color: #1e293b !important;
+        border-color: #1e293b !important;
 
         &:hover {
-            $hover-color: darken($bg-color, 3%);
-            background-color: $hover-color;
-            border-color: $hover-color;
+            background-color: #334155 !important;
+            border-color: #334155 !important;
+            color: #ffffff !important;
         }
     }
 
     .btn-warning {
-        color: $dark-font-color2;
+        color: #0f172a !important;
 
         &:hover,
         &:active,
         &:focus,
         &.active {
-            color: $dark-font-color2;
+            color: #0f172a !important;
         }
     }
 
@@ -380,34 +574,38 @@ optgroup {
         }
     }
 
-    .modal-header {
-        border-color: $dark-bg;
+    .modal-content {
+        background-color: #0f172a;
+        border-color: #1e293b;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
     }
 
+    .modal-header,
     .modal-footer {
-        border-color: $dark-bg;
+        border-color: #1e293b;
     }
 
-    // Pagination
+    /* Pagination */
     .page-item.disabled .page-link {
-        background-color: $dark-bg;
-        border-color: $dark-border-color;
+        background-color: #0f172a;
+        border-color: #1e293b;
     }
 
     .page-link {
-        background-color: $dark-bg;
-        border-color: $dark-border-color;
+        background-color: #0f172a;
+        border-color: #1e293b;
         color: $dark-font-color;
     }
 
     .monitor-list {
         .item {
             &:hover {
-                background-color: $dark-bg2;
+                background-color: rgba($primary, 0.08) !important;
             }
 
             &.active {
-                background-color: $dark-bg2;
+                background-color: rgba($primary, 0.12) !important;
+                border-color: rgba($primary, 0.25) !important;
             }
         }
     }
@@ -416,10 +614,10 @@ optgroup {
         .table-shadow-box {
             tbody {
                 .shadow-box {
-                    background-color: $dark-bg2;
+                    background-color: #0f172a;
 
                     td {
-                        border-bottom: 1px solid $dark-border-color;
+                        border-bottom: 1px solid #1e293b;
                     }
                 }
             }
@@ -432,58 +630,40 @@ optgroup {
         &.bg-danger,
         &.bg-maintenance,
         &.bg-light {
-            color: $dark-font-color2;
+            color: #0f172a;
         }
     }
 }
 
-/*
- * Transitions
- */
-
-// page-change
-.slide-fade-enter-active {
-    transition: all 0.2s $easing-in;
-}
-
-.slide-fade-leave-active {
-    transition: all 0.2s $easing-in;
+/* Transitions */
+.slide-fade-enter-active,
+.slide-fade-leave-active,
+.slide-fade-right-enter-active,
+.slide-fade-right-leave-active,
+.slide-fade-up-enter-active,
+.slide-fade-up-leave-active {
+    transition: all 0.25s $easing-in;
 }
 
 .slide-fade-enter-from,
 .slide-fade-leave-to {
-    transform: translateY(50px);
+    transform: translateY(20px);
     opacity: 0;
-}
-
-.slide-fade-right-enter-active {
-    transition: all 0.2s $easing-in;
-}
-
-.slide-fade-right-leave-active {
-    transition: all 0.2s $easing-in;
 }
 
 .slide-fade-right-enter-from,
 .slide-fade-right-leave-to {
-    transform: translateX(50px);
+    transform: translateX(20px);
     opacity: 0;
-}
-
-.slide-fade-up-enter-active {
-    transition: all 0.2s $easing-in;
-}
-
-.slide-fade-up-leave-active {
-    transition: all 0.2s $easing-in;
 }
 
 .slide-fade-up-enter-from,
 .slide-fade-up-leave-to {
-    transform: translateY(-50px);
+    transform: translateY(-20px);
     opacity: 0;
 }
 
+/* Monitor Sidebar List */
 .monitor-list {
     &.scrollbar {
         overflow-y: auto;
@@ -498,12 +678,14 @@ optgroup {
     .item {
         display: block;
         text-decoration: none;
-        padding: 13px 15px 10px 15px;
-        border-radius: 10px;
-        transition: all ease-in-out 0.15s;
+        padding: 12px 16px !important;
+        border-radius: 12px !important;
+        margin: 4px 6px !important;
+        border: 1px solid transparent !important;
+        transition: all 0.2s $easing-in-out !important;
 
         &.disabled {
-            opacity: 0.3;
+            opacity: 0.4;
         }
 
         .info {
@@ -512,73 +694,71 @@ optgroup {
         }
 
         &:hover {
-            background-color: $highlight-white;
+            background-color: rgba($primary, 0.08) !important;
+            border-color: rgba($primary, 0.1) !important;
+            transform: translateX(2px);
         }
 
         &.active {
-            background-color: #cdf8f4;
+            background-color: rgba($primary, 0.12) !important;
+            border-color: rgba($primary, 0.2) !important;
+
+            .text-truncate {
+                font-weight: 600;
+                color: $primary !important;
+            }
         }
+
         .tags {
-            // Removes margin to line up tags list with uptime percentage
             margin-left: -0.25rem;
         }
     }
 }
 
 .alert-success {
-    color: #122f21;
+    color: #ffffff;
     background-color: $primary;
     border-color: $primary;
 }
 
 .alert-info {
-    color: #055160;
-    background-color: #cff4fc;
-    border-color: #cff4fc;
+    color: #ffffff;
+    background-color: $maintenance;
+    border-color: $maintenance;
 }
 
 .alert-danger {
-    color: #842029;
-    background-color: #f8d7da;
-    border-color: #f8d7da;
-}
-
-.btn-success {
-    color: #fff;
-    background-color: #4caf50;
-    border-color: #4caf50;
+    color: #ffffff;
+    background-color: $danger;
+    border-color: $danger;
 }
 
 [contenteditable="true"] {
     transition: all $easing-in 0.2s;
-    background-color: rgba(239, 239, 239, 0.7);
+    background-color: rgba(241, 245, 249, 0.8);
     border-radius: 8px;
+    padding: 4px 8px;
 
     &.no-bg {
         background-color: transparent !important;
     }
 
     &:focus {
-        outline: 0 solid #eee;
-        background-color: rgba(245, 245, 245, 0.9);
+        outline: 2px solid $primary;
+        background-color: #ffffff;
     }
 
     &:hover {
-        background-color: rgba(239, 239, 239, 0.8);
+        background-color: rgba(241, 245, 249, 0.9);
     }
 
     .dark & {
-        background-color: rgba(239, 239, 239, 0.2);
+        background-color: rgba(30, 41, 59, 0.8);
+        
+        &:focus {
+            background-color: #090d16;
+        }
     }
-
-    /*
-    &::after {
-        margin-left: 5px;
-        content: "🖊️";
-        font-size: 13px;
-        color: #eee;
-    }
-    */
 }
 
 .action {
@@ -586,12 +766,13 @@ optgroup {
 
     &:hover {
         cursor: pointer;
-        transform: scale(1.2);
+        transform: scale(1.15);
+        color: $primary;
     }
 }
 
 .vue-image-crop-upload .vicp-wrap {
-    border-radius: 10px !important;
+    border-radius: 16px !important;
 }
 
 .spinner {
@@ -611,23 +792,24 @@ optgroup {
 h5.settings-subheading::after {
     content: "";
     display: block;
-    width: 50%;
+    width: 100%;
     padding-top: 8px;
-    border-bottom: 1px solid $dark-border-color;
+    border-bottom: 1px solid #e2e8f0;
 }
 
-/* required class */
+.dark h5.settings-subheading::after {
+    border-bottom-color: #1e293b;
+}
+
 .code-editor,
 .css-editor {
-    /* we dont use `language-` classes anymore so thats why we need to add background and text color manually */
-
-    border-radius: 1rem;
-    padding: 10px 5px;
-    border: 1px solid #ced4da;
+    border-radius: 12px;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
 
     .dark & {
-        background: $dark-bg2;
-        border: 1px solid $dark-border-color;
+        background: #090d16;
+        border: 1px solid #1e293b;
     }
 }
 
@@ -646,12 +828,16 @@ $shadow-box-padding: 20px;
     margin-left: -$shadow-box-padding;
     margin-right: -$shadow-box-padding;
     z-index: 10;
-    background-color: rgba(white, 0.2);
-    backdrop-filter: blur(2px);
-    border-radius: 0 0 10px 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-top: 1px solid #e2e8f0;
+    border-radius: 0 0 16px 16px;
+    padding: 12px;
 
     .dark & {
-        background-color: rgba($dark-header-bg, 0.9);
+        background-color: rgba(#0f172a, 0.9);
+        border-top-color: #1e293b;
     }
 }
 
@@ -670,7 +856,5 @@ $shadow-box-padding: 20px;
 .zoom-cursor {
     cursor: zoom-in;
 }
-
-// Localization
 
 @import "localization.scss";
