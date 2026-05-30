@@ -15,29 +15,28 @@ Uptime Kuma is an easy-to-use self-hosted monitoring tool.
 
 ## 🥔 Live Demo
 
-Try it!
+Experience Uptime Kuma in action!
 
-Demo Server (Location: Frankfurt - Germany): <https://demo.kuma.pet/start-demo>
+**Demo Server (Frankfurt, Germany):** [https://demo.kuma.pet/start-demo](https://demo.kuma.pet/start-demo)
 
-It is a temporary live demo, all data will be deleted after 10 minutes. Sponsored by [Uptime Kuma Sponsors](https://github.com/louislam/uptime-kuma#%EF%B8%8F-sponsors).
+_Note: This is a temporary live demo; all data will be deleted after 10 minutes. Sponsored by [Uptime Kuma Sponsors](https://github.com/louislam/uptime-kuma#%EF%B8%8F-sponsors)._
 
 ## ⭐ Features
 
-- Monitoring uptime for HTTP(s) / TCP / HTTP(s) Keyword / HTTP(s) Json Query / Websocket / Ping / DNS Record / Push / Steam Game Server / Docker Containers
-- Fancy, Reactive, Fast UI/UX
-- Notifications via Telegram, Discord, Gotify, Slack, Pushover, Email (SMTP), and [90+ notification services, click here for the full list](https://github.com/louislam/uptime-kuma/tree/master/src/components/notifications)
-- 20-second intervals
-- [Multi Languages](https://github.com/louislam/uptime-kuma/tree/master/src/lang)
-- Multiple status pages
-- Map status pages to specific domains
-- Ping chart
-- Certificate info
-- Proxy support
-- 2FA support
+- **Comprehensive Monitoring**: Support for HTTP(s), TCP, HTTP(s) Keyword, HTTP(s) JSON Query, WebSocket, Ping, DNS Record, Push, Steam Game Server, Docker Containers, gRPC, MongoDB, MySQL, PostgreSQL, Redis, RabbitMQ, MQTT, SNMP, and more.
+- **Modern UI/UX**: Fast, reactive, and beautiful dashboard powered by Vue 3 and Bootstrap 5.
+- **Extensive Notifications**: Integrate with **95+ notification services**, including Telegram, Discord, Gotify, Slack, Pushover, Email (SMTP), and many others.
+- **Fast Intervals**: Monitoring intervals as low as 20 seconds.
+- **Global Reach**: [Multi-language support](https://github.com/louislam/uptime-kuma/tree/master/src/lang) with translations for over 70 languages.
+- **Status Pages**: Create multiple public status pages and map them to specific domains.
+- **Insightful Charts**: Monitor performance with ping charts and response time history.
+- **Certificate Monitoring**: Stay informed about SSL/TLS certificate information and expiration.
+- **Advanced Security**: Support for 2FA (Two-Factor Authentication).
+- **Proxy Support**: Connect through proxies for various monitoring tasks.
 
-## 🔧 How to Install
+## 🔧 Installation
 
-### 🐳 Docker Compose
+### 🐳 Docker Compose (Recommended)
 
 ```bash
 mkdir uptime-kuma
@@ -46,10 +45,10 @@ curl -o compose.yaml https://raw.githubusercontent.com/louislam/uptime-kuma/mast
 docker compose up -d
 ```
 
-Uptime Kuma is now running on all network interfaces (e.g. http://localhost:3001 or http://your-ip:3001).
+Uptime Kuma is now accessible at `http://localhost:3001` or `http://<your-ip>:3001`.
 
 > [!WARNING]
-> File Systems like **NFS** (Network File System) are **NOT** supported. Please map to a local directory or volume.
+> Network File Systems (NFS) are **NOT** supported for data storage. Please use a local directory or volume.
 
 ### 🐳 Docker Command
 
@@ -57,145 +56,106 @@ Uptime Kuma is now running on all network interfaces (e.g. http://localhost:3001
 docker run -d --restart=always -p 3001:3001 -v uptime-kuma:/app/data --name uptime-kuma louislam/uptime-kuma:2
 ```
 
-Uptime Kuma is now running on all network interfaces (e.g. http://localhost:3001 or http://your-ip:3001).
-
-If you want to limit exposure to localhost only:
+To limit exposure to localhost only:
 
 ```bash
-docker run ... -p 127.0.0.1:3001:3001 ...
+docker run -d --restart=always -p 127.0.0.1:3001:3001 -v uptime-kuma:/app/data --name uptime-kuma louislam/uptime-kuma:2
 ```
 
-### 💪🏻 Non-Docker
+### 💪 Non-Docker
 
-Requirements:
+**Requirements:**
 
-- Platform
-  - ✅ Major Linux distros such as Debian, Ubuntu, Fedora and ArchLinux etc.
-  - ✅ Windows 10 (x64), Windows Server 2012 R2 (x64) or higher
-  - ❌ FreeBSD / OpenBSD / NetBSD
-  - ❌ Replit / Heroku
-- [Node.js](https://nodejs.org/en/download/) >= 20.4
-- [Git](https://git-scm.com/downloads)
-- [pm2](https://pm2.keymetrics.io/) - For running Uptime Kuma in the background
+- **Platform**: Major Linux distros (Debian, Ubuntu, Fedora, ArchLinux, etc.), Windows 10+ (x64), Windows Server 2012 R2+ (x64).
+- **Node.js**: >= 20.4.0
+- **Git**: [Required for cloning]
+- **pm2**: Recommended for running in the background.
 
 ```bash
+# Clone the repository
 git clone https://github.com/louislam/uptime-kuma.git
 cd uptime-kuma
+
+# Setup the project
 npm run setup
 
-# Option 1. Try it
+# Option 1: Start the server directly
 node server/server.js
 
-# (Recommended) Option 2. Run in the background using PM2
-# Install PM2 if you don't have it:
+# Option 2: Run in the background using PM2 (Recommended)
 npm install pm2 -g && pm2 install pm2-logrotate
-
-# Start Server
 pm2 start server/server.js --name uptime-kuma
 ```
 
-Uptime Kuma is now running on all network interfaces (e.g. http://localhost:3001 or http://your-ip:3001).
+**Useful PM2 Commands:**
 
-More useful PM2 Commands
+- `pm2 monit`: View console output and performance.
+- `pm2 startup && pm2 save`: Set up Uptime Kuma to start on system boot.
 
-```bash
-# If you want to see the current console output
-pm2 monit
+### 🛠️ Advanced Installation
 
-# If you want to add it to startup
-pm2 startup && pm2 save
-```
+For reverse proxy configurations and additional options, please refer to the [Wiki: How to Install](https://github.com/louislam/uptime-kuma/wiki/%F0%9F%94%A7-How-to-Install).
 
-### Advanced Installation
+## 🆙 Updating
 
-If you need more options or need to browse via a reverse proxy, please read:
+Stay up-to-date with the latest features and fixes by following the [Update Guide](https://github.com/louislam/uptime-kuma/wiki/%F0%9F%86%99-How-to-Update).
 
-<https://github.com/louislam/uptime-kuma/wiki/%F0%9F%94%A7-How-to-Install>
+## 🆕 Roadmap
 
-## 🆙 How to Update
-
-Please read:
-
-<https://github.com/louislam/uptime-kuma/wiki/%F0%9F%86%99-How-to-Update>
-
-## 🆕 What's Next?
-
-I will assign requests/issues to the next milestone.
-
-<https://github.com/louislam/uptime-kuma/milestones>
+Check out planned features and upcoming milestones: [GitHub Milestones](https://github.com/louislam/uptime-kuma/milestones).
 
 ## ❤️ Sponsors
 
-Thank you so much! (GitHub Sponsors will be updated manually. OpenCollective sponsors will be updated automatically, the list will be cached by GitHub though. It may need some time to be updated)
+A huge thank you to our sponsors!
 
 <img src="https://uptime.kuma.pet/sponsors?v=6" alt="Uptime Kuma Sponsors" />
 
-## 🖼 More Screenshots
+## 🖼 Screenshots
 
-Light Mode:
+| Light Mode                                                                                 | Status Page                                                                                                                                      |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| <img src="https://uptime.kuma.pet/img/light.jpg" width="350" alt="Light Mode Dashboard" /> | <img src="https://user-images.githubusercontent.com/1336778/134628766-a3fe0981-0926-4285-ab46-891a21c3e4cb.png" width="350" alt="Status Page" /> |
 
-<img src="https://uptime.kuma.pet/img/light.jpg" width="512" alt="Uptime Kuma Light Mode Screenshot of how the Dashboard looks" />
+| Settings                                                                            | Telegram Notifications                                                                      |
+| ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| <img src="https://louislam.net/uptimekuma/2.jpg" width="350" alt="Settings Page" /> | <img src="https://louislam.net/uptimekuma/3.jpg" width="350" alt="Telegram Notification" /> |
 
-Status Page:
+## 💡 Motivation
 
-<img src="https://user-images.githubusercontent.com/1336778/134628766-a3fe0981-0926-4285-ab46-891a21c3e4cb.png" width="512" alt="Uptime Kuma Status Page Screenshot" />
+- Created as a self-hosted alternative to tools like "Uptime Robot".
+- Built to provide a stable and well-maintained monitoring solution.
+- Designed with a focus on a modern, responsive UI.
+- Developed to explore the capabilities of Vue 3, Vite, Bootstrap 5, and WebSockets.
 
-Settings Page:
+If you find Uptime Kuma useful, please consider giving it a ⭐!
 
-<img src="https://louislam.net/uptimekuma/2.jpg" width="400" alt="Uptime Kuma Settings Page Screenshot" />
+## 🗣️ Support & Discussion
 
-Telegram Notification Sample:
+For general questions and technical support, please use the following resources:
 
-<img src="https://louislam.net/uptimekuma/3.jpg" width="400" alt="Uptime Kuma Telegram Notification Sample Screenshot" />
+- **Documentation/Wiki**: [Official Wiki](https://github.com/louislam/uptime-kuma/wiki)
+- **GitHub Issues**: [Bug Reports & Feature Requests](https://github.com/louislam/uptime-kuma/issues)
+- **Reddit**: [r/UptimeKuma](https://www.reddit.com/r/UptimeKuma/)
 
-## Motivation
+_Note: Please avoid sending support requests via email; they will not be answered._
 
-- I was looking for a self-hosted monitoring tool like "Uptime Robot", but it is hard to find a suitable one. One of the closest ones is statping. Unfortunately, it is not stable and no longer maintained.
-- Wanted to build a fancy UI.
-- Learn Vue 3 and vite.js.
-- Show the power of Bootstrap 5.
-- Try to use WebSocket with SPA instead of a REST API.
-- Deploy my first Docker image to Docker Hub.
+## 🤝 Contributions
 
-If you love this project, please consider giving it a ⭐.
+### Pull Requests
 
-## 🗣️ Discussion / Ask for Help
+We welcome pull requests! To keep reviews fast and effective, please make sure you’ve [read our pull request guidelines](https://github.com/louislam/uptime-kuma/blob/master/CONTRIBUTING.md#can-i-create-a-pull-request-for-uptime-kuma).
 
-⚠️ For any general or technical questions, please don't send me an email, as I am unable to provide support in that manner. I will not respond if you ask questions there.
+### Testing
 
-I recommend using Google, GitHub Issues, or Uptime Kuma's subreddit for finding answers to your question. If you cannot find the information you need, feel free to ask:
-
-- [GitHub Issues](https://github.com/louislam/uptime-kuma/issues)
-- [Subreddit (r/UptimeKuma)](https://www.reddit.com/r/UptimeKuma/)
-
-My Reddit account: [u/louislamlam](https://reddit.com/u/louislamlam)
-You can mention me if you ask a question on the subreddit.
-
-## Contributions
-
-### Create Pull Requests
-
-Pull requests are awesome.
-To keep reviews fast and effective, please make sure you’ve [read our pull request guidelines](https://github.com/louislam/uptime-kuma/blob/master/CONTRIBUTING.md#can-i-create-a-pull-request-for-uptime-kuma).
-
-### Test Pull Requests
-
-There are a lot of pull requests right now, but I don't have time to test them all.
-
-If you want to help, you can check this:
-<https://github.com/louislam/uptime-kuma/wiki/Test-Pull-Requests>
-
-### Test Beta Version
-
-Check out the latest beta release here: <https://github.com/louislam/uptime-kuma/releases>
-
-### Bug Reports / Feature Requests
-
-If you want to report a bug or request a new feature, feel free to open a [new issue](https://github.com/louislam/uptime-kuma/issues).
+Help us by testing pending pull requests. Learn more on the [Wiki](https://github.com/louislam/uptime-kuma/wiki/Test-Pull-Requests).
 
 ### Translations
 
-If you want to translate Uptime Kuma into your language, please visit [Weblate Readme](https://github.com/louislam/uptime-kuma/blob/master/src/lang/README.md).
+Want to help translate Uptime Kuma? Visit our [Weblate project](https://weblate.kuma.pet/projects/uptime-kuma/uptime-kuma/).
+
+### Beta Testing
+
+Try out the latest features by testing [Beta Releases](https://github.com/louislam/uptime-kuma/releases).
 
 ### Spelling & Grammar
 
