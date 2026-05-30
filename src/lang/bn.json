@@ -215,7 +215,7 @@
     "No important events": "কোনো গুরুত্বপূর্ণ ইভেন্ট নেই",
     "Edit": "সম্পাদনা",
     "Current": "বর্তমান",
-    "Uptime": "আপটাইম",
+    "Uptime": "syncengines",
     "Request Timeout": "রিকোয়েস্ট টাইমআউট",
     "Heartbeat Retry Interval": "হার্টবিট রিট্রাই ইন্টারভাল",
     "Advanced": "অ্যাডভান্স",

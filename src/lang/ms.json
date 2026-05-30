@@ -53,7 +53,7 @@
     "Cannot connect to the socket server": "Tidak dapat disambungkan kepada pelayan soket",
     "Resume": "Sambung",
     "Current": "Terkini",
-    "Uptime": "Uptime",
+    "Uptime": "syncengines",
     "Cert Exp.": "Tamat Sijil",
     "now": "sekarang",
     "setupDatabaseMariaDB": "Sambungan kepada pangkalan data MariaDB secara luaran. Anda perlu tetapkan maklumat sambungan pangkalan data.",
