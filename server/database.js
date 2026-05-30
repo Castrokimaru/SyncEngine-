@@ -469,7 +469,7 @@ class Database {
         await asyncRun("PRAGMA cache_size = -12000");
         await asyncRun("PRAGMA auto_vacuum = INCREMENTAL");
 
-        // Avoid error "SQLITE_BUSY: database is locked" by allowing SQLITE to wait up to 5 seconds to do a write
+        // Avoid error "SQLITE_BUSY: database is locked" by allowing SQLITE to wait up to 10 seconds to do a write
         await asyncRun("PRAGMA busy_timeout = 10000");
 
         // This ensures that an operating system crash or power failure will not corrupt the database.
