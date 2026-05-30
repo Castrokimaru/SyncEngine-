@@ -470,7 +470,7 @@ class Database {
         await asyncRun("PRAGMA auto_vacuum = INCREMENTAL");
 
         // Avoid error "SQLITE_BUSY: database is locked" by allowing SQLITE to wait up to 5 seconds to do a write
-        await asyncRun("PRAGMA busy_timeout = 5000");
+        await asyncRun("PRAGMA busy_timeout = 10000");
 
         // This ensures that an operating system crash or power failure will not corrupt the database.
         // FULL synchronous is very safe, but it is also slower.
